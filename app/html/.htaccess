@@ -1,0 +1,10 @@
+RewriteEngine on
+# Use PHP5.6 as default
+AddHandler application/x-httpd-ea-php70 .php
+SetEnv CI_ENV development
+
+DirectoryIndex index.php
+RewriteCond $1 !^(index\.php|resources|robots\.txt)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php/$1 [L,QSA]
