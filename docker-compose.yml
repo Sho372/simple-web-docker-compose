@@ -11,6 +11,11 @@ services:
     environment:
       XDEBUG_CONFIG: "xdebug.remote_autostart=1 remote_host=host.docker.internal remote_log=/var/log/xdebug_remote.log"
     volumes:
+      #非公開ソースをDocumentRootの一階層上に置くための共有フォルダ設定
+      - ./app/src:/var/www
+      #TODO:本来は上の共有設定だけにしたい。しかし、以下の問題があり暫定対処が必要。
+      #ローカルのアプリのソースのフォルダ構成とコンテナのフォルダ構成に齟齬がある。
+      #暫定対処として以下の共有フォルダ設定が必要。齟齬を解消しないと、冗長な設定とローカルのフォルダ構成がわかりづらくなる。
       - ./app/src/public:/var/www/public_html
 
   db:
