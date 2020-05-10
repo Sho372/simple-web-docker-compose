@@ -48,8 +48,12 @@ docker exec -it db bash
 ```shell
 .
 ├── app
-│   └── html # document root
-│       └── index.php
+│   └── src # source code
+│       └── public # document root
+│           ├── db_config.php
+│           ├── index.php
+│           └── test_db_connection
+│               └── try-catch.php
 ├── db # db server related files
 │   ├── db.env
 │   └── init # init and batch sql files.
